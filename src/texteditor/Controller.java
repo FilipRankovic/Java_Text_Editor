@@ -73,7 +73,7 @@ public class Controller {
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(
-                    new File("C:\\Users\\w7\\Documents")
+                    new File(System.getProperty("user.home") + "\\Documents")
             );
 
             mFile = fileChooser.showOpenDialog(new Stage());
@@ -130,8 +130,8 @@ public class Controller {
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(
-                    new File("C:\\Users\\w7\\Documents")
-            ); //TODO: Fix InitialDirectory
+                    new File(System.getProperty("user.home") + "\\Documents")
+            );
 
             mFile = fileChooser.showSaveDialog(new Stage());
 
