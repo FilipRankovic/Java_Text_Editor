@@ -24,9 +24,7 @@ public class Controller {
     protected void newFile() {
 
         if (textArea.getText().isEmpty())
-
             return;
-
         else {
 
             switch (alert()) {
@@ -43,11 +41,8 @@ public class Controller {
 
                 case "cancel":
                     break;
-
             }
-
         }
-
     }
 
     @FXML
@@ -78,7 +73,7 @@ public class Controller {
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(
-                    new File("C:\\Users\\w7\\Documents")
+                    new File(System.getProperty("user.home") + "\\Documents")
             );
 
             mFile = fileChooser.showOpenDialog(new Stage());
@@ -91,9 +86,7 @@ public class Controller {
                 try (BufferedReader br = new BufferedReader(new FileReader(mFile))) {
 
                     for(String line = br.readLine(); line != null; line = br.readLine()) {
-
                         textArea.appendText(line + "\n");
-
                     }
 
                 } catch (Exception e) {
@@ -133,11 +126,11 @@ public class Controller {
 
         try {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Open Text File");
+            fileChooser.setTitle("Save Text File");
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(
-                    new File("C:\\Users\\w7\\Documents")
+                    new File(System.getProperty("user.home") + "\\Documents")
             );
 
             mFile = fileChooser.showSaveDialog(new Stage());
