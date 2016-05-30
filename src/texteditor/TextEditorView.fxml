@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
+        
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -21,8 +20,8 @@
               </Menu>
               <Menu mnemonicParsing="false" text="Edit">
                   <items>
-                      <MenuItem mnemonicParsing="false" text="Copy" />
-                      <MenuItem mnemonicParsing="false" text="Paste" />
+                      <MenuItem mnemonicParsing="false" onAction="#copy" text="Copy" />
+                      <MenuItem mnemonicParsing="false" onAction="#paste" text="Paste" />
                       <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
               </Menu>
