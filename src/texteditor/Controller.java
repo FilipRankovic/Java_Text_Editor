@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public class Controller {
 
+    //TODO: Fix exceptions
+
     @FXML
     private TextArea textArea;
 
@@ -247,6 +249,11 @@ public class Controller {
         if (content.hasString()) {
             textArea.appendText(content.getString());
         }
+
+    }
+
+    @FXML
+    protected void delete() {
 
     }
 
