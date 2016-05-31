@@ -24,15 +24,15 @@ public class Controller {
     //Is the File chosen form the FileChooser
     private boolean isFileChosen;
 
-    final Clipboard clipboard = Clipboard.getSystemClipboard();
-    final ClipboardContent content = new ClipboardContent();
+    //For geting and setting strings from/in clipboard
+    //Used in paste() and copy() methods
+    private Clipboard clipboard = Clipboard.getSystemClipboard();
+    private ClipboardContent content = new ClipboardContent();
 
     @FXML
     protected void newFile() {
 
-        if (textArea.getText().isEmpty());
-            //Does nothing, file is already empty
-        else {
+        if (!textArea.getText().isEmpty()) {
 
             switch (alert()) {
 
@@ -237,6 +237,7 @@ public class Controller {
 
         content.putString(textArea.getSelectedText());
         clipboard.setContent(content);
+        //TODO: Improve
 
     }
 
@@ -251,9 +252,8 @@ public class Controller {
     @FXML
     protected void delete() {
 
-        textArea.getSelectedText();
-        //textArea.deleteText();
-        //TODO: Delete feature
+        //deletes selected text by replacing it
+        textArea.replaceSelection("");
 
     }
 
