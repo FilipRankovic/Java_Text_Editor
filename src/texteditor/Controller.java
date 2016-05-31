@@ -3,6 +3,8 @@ package texteditor;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.*;
@@ -23,8 +25,8 @@ public class Controller {
     @FXML
     protected void newFile() {
 
-        if (textArea.getText().isEmpty())
-            return;
+        if (textArea.getText().isEmpty());
+            //Does nothing, file is already empty
         else {
 
             switch (alert()) {
@@ -61,7 +63,7 @@ public class Controller {
                     break;
 
                 case "cancel":
-                    break;
+                    return;
 
             }
 
@@ -187,7 +189,7 @@ public class Controller {
     //Popup that let's the user choose if he wants to save the file, not save it or cancel the operation
     //It's returning the users choice in a form of a String
     //The method is used in newFile() and cancel() methods
-    protected String alert() {
+    private String alert() {
 
         String save = "save";
         String dontSave = "don't save";
@@ -228,10 +230,23 @@ public class Controller {
     @FXML
     protected void copy() {
 
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+
+        content.putString(textArea.getSelectedText());
+        clipboard.setContent(content);
+
     }
 
     @FXML
     protected void paste() {
+
+        final ClipboardContent content = new ClipboardContent();
+
+        //TODO: Fix paste
+        if (content.hasString()) {
+            textArea.appendText(content.getString());
+        }
 
     }
 
