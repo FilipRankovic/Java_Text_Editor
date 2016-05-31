@@ -24,6 +24,9 @@ public class Controller {
     //Is the File chosen form the FileChooser
     private boolean isFileChosen;
 
+    final Clipboard clipboard = Clipboard.getSystemClipboard();
+    final ClipboardContent content = new ClipboardContent();
+
     @FXML
     protected void newFile() {
 
@@ -232,9 +235,6 @@ public class Controller {
     @FXML
     protected void copy() {
 
-        final Clipboard clipboard = Clipboard.getSystemClipboard();
-        final ClipboardContent content = new ClipboardContent();
-
         content.putString(textArea.getSelectedText());
         clipboard.setContent(content);
 
@@ -243,17 +243,17 @@ public class Controller {
     @FXML
     protected void paste() {
 
-        final ClipboardContent content = new ClipboardContent();
-
-        //TODO: Fix paste
-        if (content.hasString()) {
+        if (content.hasString())
             textArea.appendText(content.getString());
-        }
-
+        //TODO: Improve
     }
 
     @FXML
     protected void delete() {
+
+        textArea.getSelectedText();
+        //textArea.deleteText();
+        //TODO: Delete feature
 
     }
 
