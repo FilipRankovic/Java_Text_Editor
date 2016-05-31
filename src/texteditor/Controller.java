@@ -96,7 +96,7 @@ public class Controller {
                         textArea.appendText(line + "\n");
                     }
 
-                } catch (Exception e) {
+                } catch (IOException e) {
                     System.out.println(e);
                 }
 
@@ -153,7 +153,7 @@ public class Controller {
                         bw.newLine();
                     }
 
-                } catch (Exception e) {
+                } catch (IOException e) {
                     System.out.println(e);
                 }
             } else isFileChosen = false;
