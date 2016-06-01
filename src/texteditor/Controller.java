@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class Controller {
 
-    //TODO: Fix exceptions
+    //TODO: Fix: onClose
 
     @FXML
     private TextArea textArea;
@@ -21,17 +21,17 @@ public class Controller {
     //Initialized in open() and saveAs() methods
     private File mFile;
 
-    //Is the File chosen form the FileChooser
+    //Is the File chosen from the FileChooser
     private boolean isFileChosen;
 
-    //For geting and setting strings from/in clipboard
+    //For getting and setting strings from/in clipboard
     //Used in paste() and copy() methods
     private Clipboard clipboard = Clipboard.getSystemClipboard();
-    private ClipboardContent content = new ClipboardContent();
 
     @FXML
     protected void newFile() {
 
+        //if there is no text in textArea, does nothing
         if (!textArea.getText().isEmpty()) {
 
             switch (alert()) {
@@ -55,6 +55,7 @@ public class Controller {
     @FXML
     protected void open() {
 
+        //Prompts to save or not save a file if there is text
         if (!textArea.getText().isEmpty()) {
 
             switch (alert()) {
@@ -75,6 +76,7 @@ public class Controller {
         }
 
         try {
+
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Text File");
             FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
@@ -115,6 +117,10 @@ public class Controller {
 
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(mFile))) {
 
+                //Goes trough textArea lines and puts each of them in a String "line"
+                //BufferedWriter writes the String to a file
+                //then calls newLine() to separate them
+                //It works because split() returns an array of Strings
                 for (String line : textArea.getText().split("\\n")) {
                     bw.write(line);
                     bw.newLine();
@@ -148,6 +154,10 @@ public class Controller {
 
                 try (BufferedWriter bw = new BufferedWriter(new FileWriter(mFile))){
 
+                    //Goes trough textArea lines and puts each of them in a String "line"
+                    //BufferedWriter writes the String to a file
+                    //then calls newLine() to separate them
+                    //It works because split() returns an array of Strings
                     for (String line : textArea.getText().split("\\n")) {
                         bw.write(line);
                         bw.newLine();
@@ -156,6 +166,7 @@ public class Controller {
                 } catch (IOException e) {
                     System.out.println(e);
                 }
+
             } else isFileChosen = false;
 
         } catch (Exception e) {
@@ -235,18 +246,17 @@ public class Controller {
     @FXML
     protected void copy() {
 
+        ClipboardContent content = new ClipboardContent();
         content.putString(textArea.getSelectedText());
         clipboard.setContent(content);
-        //TODO: Improve
 
     }
 
     @FXML
     protected void paste() {
 
-        if (content.hasString())
-            textArea.appendText(content.getString());
-        //TODO: Improve
+        textArea.appendText(clipboard.getString());
+
     }
 
     @FXML
