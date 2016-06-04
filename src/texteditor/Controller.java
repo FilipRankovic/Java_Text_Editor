@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 
 public class Controller {
 
-    //TODO: onClose, checkForFileChanges
+    //TODO: checkForFileChanges
 
     private Model model = new Model();
 
