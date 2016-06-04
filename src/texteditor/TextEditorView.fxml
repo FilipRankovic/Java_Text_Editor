@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="texteditor.Controller">
-    <children>
-        <MenuBar style="-fx-background-color: #E0F7FA;">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#newFile" text="New" />
-                        <MenuItem mnemonicParsing="false" onAction="#open" text="Open..." />
-                        <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
-                        <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save as..." />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#copy" text="Copy" />
-                        <MenuItem mnemonicParsing="false" onAction="#paste" text="Paste" />
-                        <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <TextArea fx:id="textArea" prefHeight="1000.0" style="-fx-background-color: #E0F7FA;">
-            <font>
-                <Font name="Calibri" size="24.0" />
-            </font></TextArea>
-    </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="texteditor.Controller">
+    <MenuBar style="-fx-background-color: #E0F7FA;">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#newFile" text="New"/>
+            <MenuItem mnemonicParsing="false" onAction="#open" text="Open..."/>
+            <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
+            <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save as..."/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" onAction="#close" text="Close"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+            <MenuItem mnemonicParsing="false" onAction="#copy" text="Copy"/>
+            <MenuItem mnemonicParsing="false" onAction="#paste" text="Paste"/>
+            <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="About"/>
+        </Menu>
+    </MenuBar>
+    <TextArea fx:id="textArea" prefHeight="1000.0" style="-fx-background-color: #E0F7FA;">
+        <font>
+            <Font name="Calibri" size="24.0"/>
+        </font>
+    </TextArea>
 </VBox>
