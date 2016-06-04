@@ -6,18 +6,22 @@ import javafx.scene.control.*;
 
 public class Controller {
 
-    //TODO: checkForFileChanges
-
     private Model model = new Model();
 
     @FXML
     private TextArea textArea;
 
+    TextArea getTextArea() {
+        return textArea;
+    }
+
+    boolean textAreaChanged;
+
     @FXML
     protected void newFile() {
-
+        System.out.println(textAreaChanged);
         //If there is no text in textArea, does nothing
-        if (!textArea.getText().isEmpty()) {
+        if (!textArea.getText().isEmpty() && textAreaChanged) {
 
             switch (model.alert()) {
 
@@ -35,7 +39,9 @@ public class Controller {
                     break;
 
             }
-        }
+
+        } else textArea.clear();
+
     }
 
     @FXML
@@ -62,6 +68,7 @@ public class Controller {
         }
 
         model.open(textArea);
+        textAreaChanged = false;
 
     }
 
@@ -86,7 +93,7 @@ public class Controller {
     @FXML
     protected void close() {
 
-        if (!textArea.getText().isEmpty()) {
+        if (!textArea.getText().isEmpty() && textAreaChanged) {
 
             switch (model.alert()) {
                 case "save":
@@ -131,5 +138,6 @@ public class Controller {
         textArea.replaceSelection("");
 
     }
+
 
 }
