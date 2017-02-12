@@ -8,6 +8,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.Optional;
 
@@ -36,11 +37,11 @@ class Model {
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Text File");
-            FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
+            FileChooser.ExtensionFilter extensionFilter =
+                    new FileChooser.ExtensionFilter("TXT Files (*txt)", "*.txt");
             fileChooser.getExtensionFilters().add(extensionFilter);
             fileChooser.setInitialDirectory(
-                    new File(System.getProperty("user.home") + "\\Documents")
-            );
+                    new File(System.getProperty("user.home") + "\\Documents"));
 
             File = fileChooser.showOpenDialog(new Stage());
 
