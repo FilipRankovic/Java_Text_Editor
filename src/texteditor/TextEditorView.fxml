@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="texteditor.Controller">
-    <MenuBar style="-fx-background-color: #E0F7FA;">
+    <MenuBar fx:id="menuBar" style="-fx-background-color: #E0F7FA;">
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#newFile" text="New"/>
             <MenuItem mnemonicParsing="false" onAction="#open" text="Open..."/>
@@ -21,13 +21,30 @@
             <MenuItem mnemonicParsing="false" onAction="#paste" text="Paste"/>
             <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete"/>
         </Menu>
+        <Menu mnemonicParsing="false" text="Theme">
+            <MenuItem mnemonicParsing="false" text="Background">
+                <graphic>
+                    <ColorPicker fx:id="backgroundColor" onAction="#changeColor"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Border">
+                <graphic>
+                    <ColorPicker fx:id="borderColor" onAction="#changeColor"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Text">
+                <graphic>
+                    <ColorPicker fx:id="textColor" onAction="#changeColor"/>
+                </graphic>
+            </MenuItem>
+        </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <MenuItem mnemonicParsing="false" text="About"/>
         </Menu>
     </MenuBar>
-    <TextArea fx:id="textArea" prefHeight="1000.0" style="-fx-background-color: #E0F7FA;">
+    <TextArea fx:id="textArea" prefHeight="1000.0" style="-fx-background-color: #E0F7FA;" wrapText="true">
         <font>
-            <Font name="Calibri" size="24.0"/>
+            <Font name="Segoe UI" size="18.0"/>
         </font>
     </TextArea>
 </VBox>
